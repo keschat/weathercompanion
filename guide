@@ -1,0 +1,226 @@
+ #------------------------------------------------------------------------------------------
+ 
+ git commit -am 'new files added'
+ 
+ #------------------------------------------------------------------------------------------
+ #------------------------------------------------------------------------------------------
+ #------------------------------------------------------------------------------------------
+
+ https://alessio.franceschelli.me/posts/windows/wsl2-upgrade/
+ 
+ https://linuxhandbook.com/check-linux-version/
+ cat /etc/os-release
+ // system md
+ hostnamectl
+ // debian
+ lsb_release -a
+// Find Linux kernel version
+ uname -r
+
+#------------------------------------------------------------------------------------------
+
+docker build -t hello-docker .
+docker build -t node:bleeding .
+docker build -t weathercompanion .
+docker push keschat/nodestarter:tagname
+
+#------------------------------------------------------------------------------------------
+
+docker-compose up 
+docker-compose up -d
+docker-compose down
+docker-compose build
+
+#------------------------------------------------------------------------------------------
+
+docker run -d -p 80:80 --name <name_container> <image>
+docker container run -it -p 80:80 nginx
+docker run -d -p 80:8081 --name myapache httpd
+docker run -d -p 3306:3306 --name mysql --env MYSQL_ROOT_PASSWORD=123456 mysql
+docker run -it --rm -p 3001:3000 --name exp_starter -v $(pwd):/web -v /web/node_modules node_c1
+sudo docker run --name docker-nginx -p 80:80 -d -v ~/docker-nginx/html:/usr/share/nginx/html nginx
+
+# use --rm to delete after stopping
+docker run -it -p 3001:3000 --rm express-starter --name exp_starter_c1
+
+https://learnk8s.io/blog/smaller-docker-images
+docker run -p 3000:3000 -ti --rm --init node-vanilla
+
+docker stop mysql
+
+#------------------------------------------------------------------------------------------
+
+docker -v /:{path} exe
+docker run -v ~/my-project:/sources <my-image>
+docker rename old-name new-name
+docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
+docker ps
+docker ps -a
+docker container ls
+docker container ls -a
+docker images
+docker images --digests=true
+docker rm <container-name>
+docker rm -f <container-name>
+docker rmi <image_name_or_id>
+docker rmi -f <image_name_or_id>
+docker rmi <your-image-id> <your-image-id>
+docker rmi $(docker images -q)
+docker start <container-name>
+docker stop <container-name>
+
+#------------------------------------------------------------------------------------------
+
+docker system df
+
+docker builder prune
+  --all , -a		    Remove all unused build cache, not just dangling ones
+  --filter		      Provide filter values (e.g. 'until=24h')
+  --force , -f		  Do not prompt for confirmation
+  --keep-storage		Amount of disk space to keep for cache
+
+#------------------------------------------------------------------------------------------
+
+https://github.com/tengis617/micro-url/blob/master/docker-compose.yml
+
+redis:
+    restart: always
+    container_name: 'redis-micro-url'
+    image: 'redis:latest'
+    volumes:
+      - 'redisdata:/data'
+    ports:
+      - '6380:6379'
+
+#------------------------------------------------------------------------------------------      
+
+https://github.com/docker/compose/issues/1487
+Thanks! docker-compose down worked, as well as docker-compose up --force-recreate 
+(but not docker-compose --build). I suppose it's not intuitive because there's a 
+volume mounted for the web container but not the Varnish container; yet Varnish 
+files stick around. Here's the docker-compose.yml file:
+
+version: '2'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+     - "4444:4444"
+    volumes:
+     - .:/src
+  varnish:
+    build:
+      context: .
+      dockerfile: Dockerfile.varnish
+    ports:
+    - "4301:80"
+    depends_on:
+    - web
+
+To rebuild a single image inside docker-compose:
+
+docker-compose up -d --force-recreate --no-deps --build $service
+
+e.g:
+
+docker-compose up -d --force-recreate --no-deps --build varnish
+
+#------------------------------------------------------------------------------------------      
+
+docker version
+
+// running containers
+docker ps
+docker container ls
+
+// all containers
+docker container ls -a
+
+// removing use first 3 chars of container ID
+docker rm c03
+
+// shows downloaded images
+// docker images
+
+// removing use first 3 chars of image ID
+docker rmi de2
+
+# docker container exec -it <container_ref> bash
+docker container exec -it mynginx bash
+cd usr/share/nginx/html
+
+docker container run -d -p 8080:80 -v /some/content:/usr/share/nginx/html:ro --name nginxsite nginx
+
+I create a directory and file inside my home folder on WSL (mkdir ~/dockertest && touch ~/dockertest/example.txt)
+ls ~/dockertest shows my file has been created
+I now start a docker container, mounting my docker test folder (docker run -it --rm -v ~/dockertest:/data alpine ls /data)
+
+wsl --distribution ubuntu-20.04 --user kesi
+
+$(pwd)
+
+\\wsl$ in explorer
+
+sudo chmod 777 /var/www/apj -R
+
+https://www.docker.com/blog/docker-desktop-wsl-2-best-practices/
+
+https://techcommunity.microsoft.com/t5/windows-dev-appconsult/using-wsl2-in-a-docker-linux-container-on-windows-to-run-a/ba-p/1482133
+wsl -l -v
+wsl --list --verbose
+docker run -e EULA=TRUE -d -p 25565:25565 --name mc itzg/minecraft-server
+
+https://www.freecodecamp.org/news/how-to-remove-images-in-docker/
+https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes
+https://linuxhandbook.com/remove-docker-images/
+https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/
+
+
+
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
+
+
+
+https://roam-staging.herokuapp.com/20220207002732-heroku.html
+Heroku
+
+Memo
+
+Link
+
+When an error like ↓ appears.
+
+	$ heroku push
+	 ›Error: Missing required flag:
+	 ›-A, --app APP app to run command against
+	 ›See more help with --help
+ 
+ 
+Link.
+
+	heroku git: remote -a app name
+
+Image creation flow
+
+Create heroku.yml. Define build, release, run and images and tasks for each stage.
+
+Listing 2: heroku.yml
+
+	build:
+	  docker:
+		web:
+		   dockerfile: Dockerfile
+		   target: release
+	run: run:
+	  web: cd ./public && python -m SimpleHTTPServer $ PORT
+ 
+ 
+Push the container image defined in ↑ to heroku. If you don't push it, it will build every time, so it will take a lot of time.
+
+	heroku container: login
+	heroku container: push release
+	heroku container: release release

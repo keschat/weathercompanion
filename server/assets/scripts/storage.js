@@ -1,0 +1,1 @@
+sessionStorage.setItem('weather-state', JSON.stringify(newState));

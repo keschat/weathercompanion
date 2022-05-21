@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="shortcut icon" href="#">
+  <!-- <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+  <!-- <script defer src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+  <script defer src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script> -->
+  <script defer src="js/main.bundle.js" type="module"></script>
+  <!-- <link defer rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css" type="module" /> -->
+  <!-- <script src="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.umd.js"></script> -->
+  <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <link rel='stylesheet' href='fonts/fontawesome/css/all.min.css'>
+</head>
+
+<body>
+
+  <div class="off-grid author">
+    <code>Design by Kesi. <a href="https://keschat.github.io/">keschat.github.io</a></code>
+  </div>
+
+  <noscript>
+    <strong>We're sorry but this application doesn't work properly without
+      JavaScript enabled. Please enable it to continue.
+    </strong>
+  </noscript>
+
+  <div class="background">
+
+    <div class="grid">
+      <div class="grid__row">
+
+        <div class="grid__col">
+          <header class="app__header">
+            <h1 class="app__caption">Weather Companion</h1>
+            <div class="online-status" data-online-status><i class="fa-solid fa-earth-africa fa-2xl"></i></div>
+            <div class="searchform__container">
+              <form class="searchform" autocomplete="off" action="#" data-search-form>
+                <input class="searchform__input" type="text" autocomplete="off" placeholder="Search for a location..." data-search-input />
+                <div>
+                  <button type="submit" class="searchform__btn" data-search-btn><i class="fa-solid fa-magnifying-glass-location"></i></button>
+                  <div class="searchform__spinner"><i class="fa-solid fa-spinner"></i></div>
+                </div>
+                <div class="searchform__autocomplete"><ul data-search-autocomplete></ul></div>
+              </form>
+            </div>
+          </header>
+        </div>
+
+        <div class="grid__col">
+          <!-- <template> -->
+          <main class="content">
+
+            <section class="content__header">
+              <div class="content__animated-icon" data-animated-icon></div>
+              <div class="content__location" data-city></div>
+            </section>
+
+            <section class="content__main">
+              <div class="content__data">
+                <div class="content__message" data-message>
+                  <div class="content__desc" data-desc></div>
+                  <div class="content__icon" data-icon></div>
+                </div>
+                <div class="content__temp" data-temp>
+                  <div class="content__value" data-temp-value></div>
+                  <div class="content__unit" data-temp-unit></div>
+                </div>
+                <div class="content__extra" data-extra>
+                  <div class="content__humidity" data-humidity></div>
+                  <div class="content__uv" data-uv></div>
+                  <div class="content__wind" data-wind></div>
+                </div>
+              </div>
+            </section>
+            <!-- <div class="location__timezone" data-timezone></div>
+                    <div class="location__localtime" data-localtime></div>
+                    <div class="location__lastupdated" data-lastupdated></div> -->
+          </main>
+          <!-- </template> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="off-grid message">
+    <code>Locations can be search by City or Region or Country ]</code><br>
+    <code>Requests are limited to 30 calls every 30mins.</code><br><br>
+    <code>TODO:[ Application to refresh data at user determined intervals.]</code>
+  </div>
+ 
+  <div class="off-grid">
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+// {
+//     "env": {
+//         "modern": {
+//             "presets": [
+//                 "@babel/preset-modules"
+//             ]
+//         },
+//         "legacy": {
+//             "presets": [
+//                 "@babel/preset-env"
+//             ]
+//         }
+//     },
+//     "plugins": [
+//         "@babel/plugin-proposal-class-properties",
+//         "@babel/plugin-proposal-object-rest-spread"
+//     ]
+// }
+{
+    "presets": [
+        "@babel/env"
+    ]
+}

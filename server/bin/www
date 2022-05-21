@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+/******************************************************************/
+// if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+    // let dotenv = require('dotenv').config({ path: './.env' });
+// }
+/******************************************************************/
+
+// import mongoose from 'mongoose';
+// const { connection } = mongoose;
+const app = require('../app');
+const debug = require('debug')('your:server');
+import http from 'http';
+
+/******************************************************************/
+
+// connection.on('open', () => {
+//     // optionally Wait for mongodb connection before server starts
+//     console.log('[ 🚀🚀🚀 MongoDB connected succesfully 🚀🚀🚀 ]');
+// });
+
+const port = process.env.PORT;
+const server = http.createServer(app);
+server.listen(port, () => console.log(`[ 🚀🚀🚀 Weather app server started on port ${port} 🚀🚀🚀 ]`));
+
+/******************************************************************/

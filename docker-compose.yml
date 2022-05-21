@@ -1,0 +1,10 @@
+services:
+  webapp:
+    build: .
+    container_name: weathercompanion_c
+    restart: always
+    ports:
+      - '4000:4000'
+    volumes:
+      - .:/web
+      - /web/node_modules

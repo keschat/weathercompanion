@@ -1,0 +1,19 @@
+FROM node:alpine
+
+ENV NODE_ENV=production
+
+RUN yarn install -g nodemon {nodemon -L app.js}
+
+WORKDIR /web
+
+COPY package.json .
+
+RUN yarn install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD node -r esm ./server/bin/www
+
+CMD ["yarn", "run", "dev"]

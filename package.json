@@ -1,0 +1,86 @@
+{
+    "name": "weathercompanion",
+    "version": "1.0.0",
+    "main": "server/assets/scripts/main.js",
+    "engines": {
+        "node": ">=18 <19",
+        "yarn": ">=1 <2"
+    },
+    "nodemonConfig": {
+        "exec": "yarn run serve",
+        "watch": [
+            "server/*"
+        ],
+        "delay": 2000,
+        "ext": "js,json",
+        "ignore": [
+            "**/__tests__/**",
+            "*.test.js",
+            "*.spec.js"
+        ]
+    },
+    "scripts": {
+        "start": "NODE_ENV=production node -r esm server/bin/www",
+        "dev": "run-p clean build:assets nodemon sync",
+        "clean": "rimraf public",
+        "styles:compile": "sass --watch server/assets/styles/index.scss public/css/main.css",
+        "scripts:compile": "rollup --config -w -m",
+        "images:compile": "cpx 'server/assets/images/**/*' 'public/img' -w",
+        "fonts:compile": "cpx 'server/assets/fonts/**/*' 'public/fonts' -w",
+        "build:assets": "run-p clean styles:compile scripts:compile images:compile fonts:compile",
+        "sync": "browser-sync start --proxy localhost:4000 --port=5000 -w --files 'public, server' --no-ui",
+        "serve": "NODE_ENV=development node -r esm server/bin/www sync",
+        "nodemon": "nodemon -L",
+        "test": "jest"
+    },
+    "dependencies": {
+        "apicache": "^1.6.3",
+        "axios": "^0.27.2",
+        "chalk": "^5.0.1",
+        "chokidar": "^3.5.3",
+        "cookie-parser": "^1.4.6",
+        "cors": "^2.8.5",
+        "cpx": "^1.5.0",
+        "debug": "^4.3.4",
+        "dotenv": "^16.0.1",
+        "ejs": "^3.1.8",
+        "esm": "^3.2.25",
+        "express": "^4.18.1",
+        "express-rate-limit": "^6.4.0",
+        "global": "^4.4.0",
+        "http-errors": "^2.0.0",
+        "mongoose": "^6.3.4",
+        "morgan": "^1.10.0",
+        "multer": "^1.4.4",
+        "ora": "^6.1.0",
+        "valid-url": "^1.0.9"
+    },
+    "devDependencies": {
+        "@arcanis/sherlock": "^2.0.3",
+        "@babel/cli": "^7.17.10",
+        "@babel/core": "^7.18.0",
+        "@babel/node": "^7.17.10",
+        "@babel/preset-env": "^7.17.12",
+        "@rollup/plugin-babel": "^5.3.1",
+        "@rollup/plugin-commonjs": "^22.0.0",
+        "@rollup/plugin-json": "^4.1.0",
+        "@rollup/plugin-node-resolve": "^13.3.0",
+        "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.6",
+        "browser-sync": "^2.27.9",
+        "esbuild": "^0.14.39",
+        "jest": "^28.1.0",
+        "nodemon": "^2.0.16",
+        "npm-run-all": "^4.1.5",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.42.0",
+        "rollup-plugin-bundleutils": "^1.2.4",
+        "sass": "^1.51.0",
+        "terser": "^5.13.1"
+    },
+    "description": "Weather report application",
+    "author": "kesi",
+    "email": "keschat@outlook.com",
+    "url": "keschat.github.io",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/keschat/weathercompanion.git"
+}
