@@ -1,7 +1,7 @@
 services:
   webapp:
     build: .
-    container_name: weathercompanion_c
+    image: keschat/weathercompanion
     restart: always
     ports:
       - '4000:4000'
