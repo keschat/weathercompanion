@@ -8,6 +8,8 @@ const location = {
         maximumAge: 0
     },
 
+    currentCoords: {},
+
     async getCoords() {
 
         let pos;
@@ -26,7 +28,7 @@ const location = {
 
     async watchCoords() {
 
-        //     let id, target = target, options, success = cb;
+            let id, target;
 
         //     function success(pos) {
         //       const crd = pos.coords;

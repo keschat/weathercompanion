@@ -174,6 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('[ 🚀🚀🚀 Could not get coordinates...  🚀🚀🚀 ]');
         });
     }
+    
     async function setWeatherReport(searchTerm1 = '', searchTerm2 = '') {
         // console.log('[ 🚀🚀🚀 Setting new weather report...  🚀🚀🚀 ]');
         weather.getData({ searchTerm1, searchTerm2 }, 6)
